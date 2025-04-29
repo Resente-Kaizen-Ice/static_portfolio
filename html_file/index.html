@@ -1,112 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kaizen Ice Resente | Portfolio</title>
-    <link rel="stylesheet" href="../css_file/index.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="../css_file/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script>
+      window.addEventListener("scroll", function () {
+        const scrollPosition = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollPosition / docHeight;
+
+        const colorStart = `#503e80`;
+        const colorEnd = `rgb(${80 - scrollPercent * 80}, ${
+          62 - scrollPercent * 62
+        }, ${128 - scrollPercent * 128})`;
+        document.body.style.background = `linear-gradient(to bottom, ${colorStart} 0%, ${colorEnd} 100%)`;
+
+        const profileSection = document.querySelector(".profile-section");
+
+        if (scrollPercent > 0.05) {
+          profileSection.classList.remove("visible-section");
+          profileSection.classList.add("hidden-section");
+        } else {
+          profileSection.classList.remove("hidden-section");
+          profileSection.classList.add("visible-section");
+        }
+
+        const revealSections = document.querySelectorAll(
+          ".skills, .educ, .proj, .footer"
+        );
+        revealSections.forEach((section) => {
+          const sectionTop = section.getBoundingClientRect().top;
+          if (sectionTop < window.innerHeight - 100) {
+            section.classList.add("visible-section");
+          }
+        });
+      });
+
+      window.addEventListener("DOMContentLoaded", () => {
+        const profileSection = document.querySelector(".profile-section");
+        profileSection.classList.add("visible-section");
+      });
+    </script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="#about">About <span class="highlight">Me</span></a>
+    </nav>
+
     <main class="profile">
-        <!-- Profile Section -->
-        <section class="profile-section">
-            <div class="crop-box">
-                <img src="../images/11.jpg" alt="Kaizen Ice Resente" class="profile-img" />
-            </div>
-            <div class="intro">
-                <h1>Hi, I’m Kaizen Ice Resente</h1>
-                <p>Database & Backend Developer skilled in C# REST API, Python, ASP.NET, T-SQL, and MySQL</p>
-            </div>
-        </section>
+      <!-- Profile Section -->
+      <section class="profile-section">
+        <div class="crop-box">
+          <img
+            src="../images/11.jpg"
+            alt="Kaizen Ice Resente"
+            class="profile-img"
+          />
+        </div>
+        <div class="intro">
+          <h1>Hi, I’m Kaizen Ice Resente</h1>
+          <p>
+            Database & Backend Developer skilled in C# REST API, Python,
+            ASP.NET, T-SQL, and MySQL
+          </p>
+        </div>
+      </section>
 
-        <!-- Education Section -->
-        <section class="educ">
-            <h2>Education</h2>
-            <p>I graduated top of my class with a Bachelor of Science in Computer Science from STI College.</p>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="proj">
-            <h2>Projects</h2>
-            <p>Here are some of my projects. Visit my <a href="https://github.com/Resente-Kaizen-Ice" target="_blank">GitHub</a> for more.</p>
-
-            <div class="proj-1">
-                <div class="proj-item">
-                    <div class="proj-image">
-                        <img src="../images/frontEnd.png" class="front" alt="Frontend Screenshot"/>
-                    </div>
-                    <div class="proj-description">
-                        <p>
-                            An Ordering and Inventory System built with REST API and TypeScript to streamline backend operations and frontend UI interactions.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj-item">
-                    <div class="proj-image">
-                        <img src="../images/back1.png" class="front" alt="Backend Screenshot 1"/>
-                    </div>
-                    <div class="proj-description">
-                        <p>
-                            Backend screenshot showcasing database and API integration.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj-item">
-                    <div class="proj-image">
-                        <img src="../images/back2.png" class="front" alt="Backend Screenshot 2"/>
-                    </div>
-                    <div class="proj-description">
-                        <p>
-                            Another backend screenshot demonstrating functionality and performance.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj-item">
-                    <div class="proj-image">
-                        <img src="../images/me1.webp" class="front" alt="Project Detail 1"/>
-                    </div>
-                    <div class="proj-description">
-                        <p>
-                            Project detail showing the interface for managing orders.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="proj-item">
-                    <div class="proj-image">
-                        <img src="../images/me2.webp" class="front" alt="Project Detail 2"/>
-                    </div>
-                    <div class="proj-description">
-                        <p>
-                            Another project detail screenshot showcasing the UI for users and admins.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div style="margin-top: 50px; text-align: center;">
-            <a href="../doc_file/KaizenIceResenteResume.pdf" download>
-              <button style="padding: 12px 24px; font-size: 1rem;">Download Resume</button>
-            </a>
-        
-            <a href="../doc_file/KaizenIceResente_CV.pdf" download>
-              <button style="padding: 12px 24px; font-size: 1rem; margin-left: 10px;">Download CV</button>
-            </a>
+      <!-- Skills Section -->
+      <section class="skills" id="skills">
+        <h2>Skills</h2>
+        <p>Technologies I work with:</p>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <i class="fab fa-html5"></i>
+            <span>HTML5</span>
           </div>
+          <div class="skill-item">
+            <i class="fab fa-css3-alt"></i>
+            <span>CSS3</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-python"></i>
+            <span>Python</span>
+          </div>
+          <div class="skill-item">
+            <i class="fab fa-cuttlefish"></i>
+            <span>C#</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-plug"></i>
+            <span>REST API</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            <span>MySQL</span>
+          </div>
+          <div class="skill-item">
+            <i class="fas fa-database"></i>
+            <span>SQL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section class="educ">
+        <h2>Education</h2>
+        <p>
+          I graduated top of my class with a Bachelor of Science in Computer
+          Science from STI College.
+        </p>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="proj">
+        <h2>Projects</h2>
+        <p>
+          Here are some of my projects. Visit my
+          <a href="https://github.com/Resente-Kaizen-Ice" target="_blank"
+            >GitHub</a
+          >
+          for more.
+        </p>
+
+        <div class="proj-1">
+          <div class="proj-item">
+            <div class="proj-image">
+              <img
+                src="../images/frontEnd.png"
+                class="front"
+                alt="Frontend Screenshot"
+              />
+            </div>
+            <div class="proj-description">
+              <p>
+                An Ordering and Inventory System built with REST API and
+                TypeScript to streamline backend operations and frontend UI
+                interactions.
+              </p>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-image">
+              <img
+                src="../images/back1.png"
+                class="front"
+                alt="Backend Screenshot 1"
+              />
+            </div>
+            <div class="proj-description">
+              <p>Backend screenshot showcasing database and API integration.</p>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-image">
+              <img
+                src="../images/back2.png"
+                class="front"
+                alt="Backend Screenshot 2"
+              />
+            </div>
+            <div class="proj-description">
+              <p>
+                Another backend screenshot demonstrating functionality and
+                performance.
+              </p>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-image">
+              <img
+                src="../images/me1.webp"
+                class="front"
+                alt="Project Detail 1"
+              />
+            </div>
+            <div class="proj-description">
+              <p>Project detail showing the interface for managing orders.</p>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-image">
+              <img
+                src="../images/me2.webp"
+                class="front"
+                alt="Project Detail 2"
+              />
+            </div>
+            <div class="proj-description">
+              <p>
+                Another project detail screenshot showcasing the UI for users
+                and admins.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     <footer class="footer">
-        <h2>Contact Me</h2>
-        <ul>
-            <li><strong>Mobile:</strong> 0938-400-3071</li>
-            <li><strong>Facebook:</strong> <a href="https://www.facebook.com/people/Kaizen-Ice/pfbid03GAmHyyVRdt6BUSkS6iZHrDkMbV97LPXTBs4pp9PGUPW3y7e1oeGi7aXxntoR1Pml/" target="_blank">Kaizen Ice</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kaizen-ice-resente-36a914339" target="_blank">Kaizen Ice Resente</a></li>
-            <li><strong>Email:</strong> <a href="mailto:resentekaizenice@gmail.com">resentekaizenice@gmail.com</a></li>
-        </ul>
-    </footer>    
-</body>
+      <h2>Contact Me</h2>
+      <ul>
+        <li><strong>Mobile:</strong> 0938-400-3071</li>
+        <li>
+          <strong>Facebook:</strong>
+          <a
+            href="https://www.facebook.com/people/Kaizen-Ice/pfbid03GAmHyyVRdt6BUSkS6iZHrDkMbV97LPXTBs4pp9PGUPW3y7e1oeGi7aXxntoR1Pml/"
+            target="_blank"
+            >Kaizen Ice</a
+          >
+        </li>
+        <li>
+          <strong>LinkedIn:</strong>
+          <a
+            href="https://www.linkedin.com/in/kaizen-ice-resente-36a914339"
+            target="_blank"
+            >Kaizen Ice Resente</a
+          >
+        </li>
+        <li>
+          <strong>Email:</strong>
+          <a href="mailto:resentekaizenice@gmail.com"
+            >resentekaizenice@gmail.com</a
+          >
+        </li>
+        <li>
+          <div style="margin-top: 50px; text-align: center">
+            <a href="../doc_file/KaizenIceResenteResume.pdf" download>
+              <button style="padding: 12px 24px; font-size: 1rem">
+                Download Resume
+              </button>
+            </a>
+
+            <a href="../doc_file/KaizenIceResente_CV.pdf" download>
+              <button
+                style="padding: 12px 24px; font-size: 1rem; margin-left: 10px"
+              >
+                Download CV
+              </button>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </footer>
+  </body>
 </html>
-    
